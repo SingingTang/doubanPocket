@@ -3,7 +3,68 @@ body {
     margin: 0;
 }
 
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     text-align: center;
     margin-top: 200px;
+}
+
+.app{
+    width: 100vw;
+    /* margin: 50px auto; */
+    border: 1px solid rgb(214, 214, 214);
+    padding: 10px;
+    position: relative;
+}
+
+.search-container{
+    height: 50px;
+    margin-top: 20px;
+    vertical-align: top;
+    display: flex;
+}
+
+
+.search-input{
+    padding-left: 30px;
+    flex: 1;
+    outline: none;
+    height: 50px;
+    border: 1px solid rgb(214, 214, 214);
+}
+
+.search-button{
+    background: rgb(60, 162, 255);
+    padding: 0 15px;
+    /* flex: 0.3; */
+    border: none;
+    color: #fff;
+    height: 50px;
+}
+
+.topic-list{
+    position: fixed;
+    display: flex;
+    height: 50px;
+    list-style: none;
+    bottom: 0;
+    width: 100vw;
+    background: rgb(246, 246, 246);
+    margin-left: -10px;
+}
+
+.topic{
+    flex: 1;
+    text-align: center;
+}
+
+.item{
+    margin-top: 20px;
+    height: 140px;
+    border: 1px solid rgb(214, 214, 214);
 }
