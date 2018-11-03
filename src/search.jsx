@@ -10,18 +10,27 @@ export default class Search extends React.Component{
     }
 
     handleSearch(){
-        console.log(this.state.keyword);
-        this.props.onGetData && this.props.onGetData(this.state.keyword);
+        this.props.onGetData && this.props.onGetData('',this.state.keyword);
     }
 
-    handleInputKeyUp(event){
+    handleInputChange(event){
         let keyword = event.target.value;
         this.setState({keyword});
     }
 
+    hankleInputKeyUp(event){
+        if(event.keyCode === 13){
+            this.handleSearch();
+        }
+    }
+
+    handleBlur(event){
+        this.props.onInputBlur && this.props.onInputBlur(event.target.value);
+    }
+
     render(){
         return (<div className="search-container">
-            <input type="text" className="search-input" placeholder="书名、作者、ISBN" value={this.state.keyword} onChange={this.handleInputKeyUp.bind(this)}/>
+            <input type="text" className="search-input" placeholder={this.props.placeholder} value={this.state.keyword} onChange={this.handleInputChange.bind(this)} onKeyUp={this.hankleInputKeyUp.bind(this)} onBlur={this.handleBlur.bind(this)}/>
             <button className="search-button" onClick={this.handleSearch.bind(this)}>搜索</button>
         </div>)
     }
