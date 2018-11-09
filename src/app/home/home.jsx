@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import './style.css'
-import Search from './search'
-import util from './util'
-import TopicList from './topicList'
+import Search from './search/search'
+import util from '../util'
+import TopicList from './topic/topicList'
 import fetchJsonp from 'fetch-jsonp'
-import ContentList from './contentList'
+import ContentList from './content/contentList'
 
 class Home extends Component {
   constructor (props) {
@@ -18,7 +17,6 @@ class Home extends Component {
 
   setScrollTop (top) {
     if (!isNaN(top)) {
-      console.log('top')
       document.body.scrollTop = 1000
     }
   }
@@ -61,7 +59,6 @@ class Home extends Component {
 
     // 获取完整url
     var url = this.parseUrl(topic, keyword, start)
-    console.log(url);
 
     // 如果有缓存，则不请求数据
     if (!fresh && this.ifLocalStorage(topic, keyword, start)) {

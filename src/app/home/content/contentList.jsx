@@ -46,13 +46,11 @@ export default class ContentList extends React.Component {
         // 或者在滚动到底部的时候可以加载更多
         if (document.documentElement.scrollTop === 0){
             this.driection = 'down';
-            console.log( '第一屏');
             this.touchStart = touch;
             this.touchMove = touch;
             this.refresh = true;
             this.isRefreshed = false;
         } else if (document.documentElement.scrollTop + window.innerHeight === document.body.scrollHeight){
-            console.log('最后一屏')
             this.driection = 'up';
             this.touchStart = touch;
             this.touchMove = touch;
@@ -72,11 +70,6 @@ export default class ContentList extends React.Component {
         var touch = event.targetTouches[0];
         // 如果是在顶部触发
         if (this.driection === 'down') {
-            // 必须是下拉，则下一个Y坐标要比上一个Y坐标大，否则不触发更新，返回
-            // if (touch.pageY < this.touchMove.pageY) {
-            //     this.refresh = false;
-            //     return;
-            // }
             this.refresh = true;
             var top = this.state.top + (touch.pageY - this.touchMove.pageY);
             // 当下拉高度超过130时，显示正在更新，并触发刷新
@@ -99,11 +92,6 @@ export default class ContentList extends React.Component {
 
         }
         else if (this.driection === 'up') {
-            // 若是在底部上拉，则下一上Y坐标要比上一个Y坐标小，否则不加载，返回
-            // if (touch.pageY > this.touchMove.pageY) {
-            //     // this.refresh = false;
-            //     return;
-            // }
             this.refresh = true;
             var bottom = this.state.bottom + (this.touchMove.pageY - touch.pageY);
             // 当上拉高度超过130时，显示加载更多
@@ -142,7 +130,7 @@ export default class ContentList extends React.Component {
 
             if (top > 0) {
                 timer = setInterval(() => {
-                    top = top > 2 ? top - 2 : 0;
+                    top = top > 5 ? top - 5 : 0;
                     this.setState({ top });
                     top || clearInterval(timer);
                     if (top < 130) {
@@ -174,8 +162,6 @@ export default class ContentList extends React.Component {
     }
 
     onClick(event) {
-        console.log('click');
-        // localStorage.setItem('curContent', this.props.content);
         localStorage.setItem('top', this.getScrollTop());
     }
 
@@ -183,11 +169,8 @@ export default class ContentList extends React.Component {
         var scrollTop = 0;
         if (document.documentElement && document.documentElement.scrollTop) {
             scrollTop = document.documentElement.scrollTop;
-            // localStorage.setItem('top', scrollTop);
-            console.log('ele');
         }
         else if (document.body) {
-            console.log('body ');
             scrollTop = document.body.scrollTop;
         }
         return scrollTop;

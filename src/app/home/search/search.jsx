@@ -1,5 +1,4 @@
 import React from 'react'
-import { placeholder } from './util'
 import PropTypes from 'prop-types'
 
 export default class Search extends React.Component {

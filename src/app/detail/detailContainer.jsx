@@ -3,7 +3,7 @@ import DetailBook from './detailBook'
 import DetailMovie from './detailMovie'
 import DetailMusic from './detailMusic'
 import { Link } from 'react-router-dom'
-import util from './util'
+import util from '../util'
 
 export default class DetailContainer extends React.Component {
   constructor (props) {

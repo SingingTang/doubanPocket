@@ -1,6 +1,6 @@
 import React from 'react';
-require ('./font/iconfont.js');
-import util from './util';
+require ('../../../font/iconfont');
+import util from '../../util';
 
 export default class Topic extends React.Component{
 

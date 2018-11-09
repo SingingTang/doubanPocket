@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Home from './home';
-import Detail from './detailContainer';
+import Home from './home/home';
+import Detail from './detail/detailContainer';
 import {HashRouter, Route} from 'react-router-dom';
 
 
