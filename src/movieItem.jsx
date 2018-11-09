@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default class MovieList extends React.Component{
+export default class MovieItem extends React.Component{
 
     constructor(props){
         super(props);
@@ -18,16 +19,23 @@ export default class MovieList extends React.Component{
 
 
     render(){
+        var content = this.state.content;
+
         return (<div className="movie item">
         <Link to={"detail/"+this.props.index} replace>
-        <img className="item-image" src={this.state.content.image} />
-        <p className="item-title">名称: {this.state.content.title}-{this.state.content.pubdate}</p>
-        <p className="item-tag"> {this.state.content.tags.map((tag, index)=>{
+        <img className="item-image" src={content.image} />
+        <p className="item-title">名称: {content.title}-{content.pubdate}</p>
+        <p className="item-tag"> {content.tags.map((tag, index)=>{
                 return <span key={index}>{tag}</span>
             })} </p>
-        <p className="item-author">{this.state.content.author.join(' ')}</p>
-        <p className="item-rating">评分：{this.state.content.rating}</p>
+        <p className="item-author">{content.author.join(' ')}</p>
+        <p className="item-rating">评分：{content.rating}</p>
         </Link>
     </div>)
     }
+}
+
+MovieItem.propTypes = {
+    content: PropTypes.object,
+    index: PropTypes.number
 }

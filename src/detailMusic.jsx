@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
-export default class MusicBook extends React.Component{
+export default class DetailMusic extends React.Component{
+    
     render(){
 
         var content = this.props.content;
@@ -28,4 +30,9 @@ export default class MusicBook extends React.Component{
         </div>
     </div>)
     }
+}
+
+
+DetailMusic.propTypes = {
+    content: PropTypes.object
 }

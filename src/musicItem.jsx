@@ -1,7 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default class MusicList extends React.Component {
+export default class MusicItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,25 +13,27 @@ export default class MusicList extends React.Component {
 
     static getDerivedStateFromProps(nextProps, prevState) {
 
-        return {content: nextProps.content};
+        return { content: nextProps.content };
 
     }
 
     render() {
 
+        var content = this.state.content;
         return (
             <div className="music item">
                 <Link to={"detail/" + this.props.index} replace>
-                    <img className="item-image" src={this.state.content.image}/>
-                    <p className="item-title">名称: {this.state.content.title}</p>
-                    <p className="item-author">作者：{this
-                            .state
-                            .content
-                            .author
-                            .join(' ')}</p>
-                    <p className="item-rating">评分：{this.state.content.rating}</p>
+                    <img className="item-image" src={content.image} />
+                    <p className="item-title">名称: {content.title}</p>
+                    <p className="item-author">作者：{content.author}</p>
+                    <p className="item-rating">评分：{content.rating}</p>
                 </Link>
             </div>
         )
     }
+}
+
+MusicItem.propTypes = {
+    content: PropTypes.object,
+    index: PropTypes.number
 }

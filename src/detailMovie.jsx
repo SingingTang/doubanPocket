@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
-export default class MovieBook extends React.Component{
+export default class DetailMovie extends React.Component{
     render(){
 
         var content = this.props.content;
@@ -26,4 +27,8 @@ export default class MovieBook extends React.Component{
             </div>
         </div>)
     }
+}
+
+DetailMovie.propTypes = {
+    content: PropTypes.object
 }
