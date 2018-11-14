@@ -204,7 +204,7 @@ class Home extends Component {
                 topic={this.state.topic}
                 onRefresh={this.onGetData.bind(this)}
             />
-
+            
             <div className="refresh" >正在刷新...</div>
             <div className="loadmore" >加载更多...</div>
         </div>);

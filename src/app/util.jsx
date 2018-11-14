@@ -24,4 +24,7 @@ const placeholder = {
   music: '唱片名、表演者、条码、ISRC'
 }
 
+function getData (rul){
+}
+
 export default { topics, topicIcon, url, topicList, placeholder }
